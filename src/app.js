@@ -1,27 +1,42 @@
+
+
+//create a new instance
+
+ 
+
+
 const express = require("express");
+const connectDB = require("./config/database");
+const userModel = require("./models/user"); 
+
+
 const app = express();
 
-const { adminAuth,userAuth } = require("./middlewares/auth");
- 
-app.use ("/admin",adminAuth);
+connectDB();
 
-app.get("/user",userAuth,(req,res) => {
-    res.send("User Data Sent");
+app.post("/signup", async (req, res) => {
+  try {
+    const newUser = new userModel({
+      firstName: "Rohit",
+      lastName: "Sharma",
+      emailId: "rohit3045@gmail.com",
+      password: "rohit@3045",
+      gender: "male",
+      age: 34
+    });
+
+    await newUser.save();
+    res.send("User added successfully");
+  } catch (err) {
+    console.error(err);
+    res.status(500).send("Error adding user");
+  }
 });
 
-app.get("/admin/getAllData",(req,res) => {
-    res.send("all data send");
-
-});
-
-app.get("/admin/deleteUser",(req,res) => {
-    res.send("Delete a user");
-
-});
 
 
 
-
+connectDB();
 
 
 app.listen(7000,()=>{
