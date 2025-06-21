@@ -14,8 +14,14 @@
   "author": "Vaibhav Shrivastava",
   "license": "ISC",
   "dependencies": {
+    "bcrypt": "^6.0.0",
+    "cookie": "^1.0.2",
+    "cookie-parser": "^1.4.7",
     "express": "^5.1.0",
-    "mongoose": "^8.15.2"
+    "jsonwebtoken": "^9.0.2",
+    "mongoose": "^8.15.2",
+    "parser": "^0.1.4",
+    "validator": "^13.15.15"
   },
   "devDependencies": {
     "@types/node": "^24.0.3"
